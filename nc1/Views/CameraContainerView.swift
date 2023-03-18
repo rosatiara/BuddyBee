@@ -12,11 +12,26 @@ struct CameraContainerView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 40.0, style: .circular)
                 .fill(Color.yellow)
-                .frame(width: 360)
+                .frame(width: 327)
             VStack {
-                // command
-                // camera frame goes here
-                // slider button
+                Text("Lorem ipsum....")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .frame(width: 283, height: 40)
+                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.white).shadow(radius: 3))
+                Spacer()
+                    .frame(height: 20)
+                ZStack {
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: 283, height: 384)
+                    // CameraFrame()
+                    // don't forget to add padding
+                }
+                // SliderButton()
+                
+                
             }
         }
     }
