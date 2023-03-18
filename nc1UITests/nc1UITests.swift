@@ -2,7 +2,7 @@
 //  nc1UITests.swift
 //  nc1UITests
 //
-//  Created by Rosa Tiara Galuh on 18/03/23.
+//  Created by Team 1 on 18/03/23.
 //
 
 import XCTest

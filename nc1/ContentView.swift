@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  nc1
 //
-//  Created by Rosa Tiara Galuh on 18/03/23.
+//  Created by Team 1 on 18/03/23.
 //
 
 import SwiftUI
