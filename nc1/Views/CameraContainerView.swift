@@ -27,8 +27,10 @@ struct CameraContainerView: View {
                         .fill(Color.black)
                         .frame(width: 283, height: 384)
                     // CameraFrame()
-                    // don't forget to add padding
+                    // test
                 }
+                Spacer()
+                    .frame(height:10)
                 // SliderButton()
                 
                 
