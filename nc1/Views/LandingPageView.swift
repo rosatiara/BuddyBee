@@ -24,7 +24,7 @@ struct LandingPageView: View {
                     Button(action: {
                         
                     }, label: {
-                        Image("Image")
+                        Image("Bee")
                             .resizable()
                             .renderingMode(.original)
                     })
