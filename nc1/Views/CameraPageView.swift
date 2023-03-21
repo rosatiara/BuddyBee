@@ -38,7 +38,8 @@ struct CameraPageView: View {
                 }
                 Text("Selfie with\n**Nama Orang**")
                     .font(.title)
-                Image(systemName: "heart")
+
+                Image(systemName: "heart") // camera here
                     .resizable()
                     .frame(width: 320, height: 500)
                     .padding()
