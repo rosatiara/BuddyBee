@@ -11,7 +11,8 @@ struct CameraPageView: View {
     var body: some View {
         ZStack {
             Color(0xFEDF3F)
-                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(.all)
+            
             VStack(alignment: .center){
                 HStack {
                     Button (action: {
@@ -27,7 +28,7 @@ struct CameraPageView: View {
                     Spacer()
                     Text("Selfie with\nJohanes Rio")
                         .multilineTextAlignment(.center)
-                        .font(.title)
+                        .font(.title3)
                         .foregroundColor(.black)
                     Spacer()
                     Button (action: {
@@ -39,7 +40,6 @@ struct CameraPageView: View {
                             .frame(width: 20, height: 24)
                             .foregroundColor(.black)
                             .padding()
-                            .border(.red)
                     })
                 }
                 CameraView()
@@ -61,6 +61,7 @@ struct CameraPageView: View {
                     .frame(width: 60, height: 60)
                 }
             }
+            
         }
     }
 }

@@ -116,7 +116,7 @@ struct CameraPreview: UIViewRepresentable{
         // preview properties
         camera.preview.videoGravity = .resizeAspectFill
         camera.preview.frame = CGRect(x: 0, y: 0, width: 278, height: 380)
-        camera.preview.position = CGPoint(x: view.frame.width / 2.18, y: view.frame.height / 3.75)
+        camera.preview.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3.4)
 
         return view
         
