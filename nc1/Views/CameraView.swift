@@ -72,27 +72,27 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
-        // Take picture...
-        func takePic() {
-            DispatchQueue.global(qos: .background).async {
-                self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-                self.session.stopRunning()
-                
-                DispatchQueue.main.async {
-                    withAnimation {self.isTaken.toggle()}
-                }
-            }
-        }
-        
-        // Produce photo output
-        func photoOutput(_ output: AVCaptureOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            if error != nil {
-                return
-            }
-            print("Picture taken!")
+    }
+    
+    // Take picture...
+    func takePic() {
+        DispatchQueue.global(qos: .background).async {
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            self.session.stopRunning()
             
+            DispatchQueue.main.async {
+                withAnimation {self.isTaken.toggle()}
+            }
         }
+    }
+    
+    // Produce photo output
+    func photoOutput(_ output: AVCaptureOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if error != nil {
+            return
+        }
+        print("Picture taken!")
+        
     }
 }
 
