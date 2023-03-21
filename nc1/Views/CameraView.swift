@@ -10,16 +10,16 @@ import AVFoundation
 
 struct CameraView: View {
     @StateObject var camera = CameraModel()
+ 
     var body: some View {
         ZStack {
             Rectangle()
                 .background(Color.white)
                 .frame(width: 326, height: 497)
             CameraPreview(camera: camera)
-                .onAppear(perform: {
-                    camera.check()
-                })
-        }
+        }.onAppear(perform: {
+            camera.check()
+        })
     }
 }
 
@@ -31,6 +31,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
     
+    // Check camera status
     func check() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -87,12 +88,11 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     }
     
     // Produce photo output
-    func photoOutput(_ output: AVCaptureOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:AVCapturePhoto, error: Error?) {
         if error != nil {
             return
         }
         print("Picture taken!")
-        
     }
 }
 
@@ -102,7 +102,7 @@ struct CameraView_Previews: PreviewProvider {
     }
 }
 
-struct CameraPreview: UIViewRepresentable{
+struct CameraPreview: UIViewRepresentable {
     @ObservedObject var camera: CameraModel
     
     func makeUIView(context: Context) -> some UIView {

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CameraPageView: View {
+    @StateObject var camera = CameraModel()
     var body: some View {
         ZStack {
             Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .center){
                 HStack {
                     Button (action: {
-                        // back to random name
+                        // back to LandingPageView()
                     },
                             label: {
                         Image(systemName: "chevron.left")
@@ -26,21 +26,12 @@ struct CameraPageView: View {
                             .padding()
                     })
                     Spacer()
-                    Text("Selfie with\nJohanes Rio")
-                        .multilineTextAlignment(.center)
+                    Text("Selfie with Johanes Rio")
+                        .frame(alignment: .center)
                         .font(.title3)
+                        .bold()
                         .foregroundColor(.black)
                     Spacer()
-                    Button (action: {
-                        
-                    },
-                            label: {
-                        Image(systemName: "square.and.arrow.up")
-                            .resizable()
-                            .frame(width: 20, height: 24)
-                            .foregroundColor(.black)
-                            .padding()
-                    })
                 }
                 CameraView()
                 ZStack { // Shutter Button
@@ -50,9 +41,7 @@ struct CameraPageView: View {
                     Circle()
                     .fill(.white)
                     .frame(width: 100, height: 100)
-                    Button (action: {
-                       
-                    },
+                    Button (action: camera.takePic,
                             label: {
                             Image("Bee2")
                                 .resizable()
@@ -71,3 +60,5 @@ struct CameraPageView_Previews: PreviewProvider {
         CameraPageView()
     }
 }
+
+

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LandingPageView: View {
+    @State private var isCameraPageActive = false
     var body: some View {
         // test
         ZStack {
@@ -16,23 +17,30 @@ struct LandingPageView: View {
             VStack(alignment: .center) {
                 Text("Click the bee!")
                     .font(.largeTitle)
-                .bold()
-                .padding(.bottom, 40)
+                    .bold()
+                    .padding(.bottom, 40)
+                    .foregroundColor(.black)
                 ZStack {
                     Circle()
                         .fill(.white)
                         .frame(width: 230, height: 230)
-                    Button(action: {
-                        
-                    }, label: {
-                        Image("Bee")
-                            .resizable()
-                            .renderingMode(.original)
-                    })
+                    
+                    NavigationLink(destination: CameraPageView(), isActive: $isCameraPageActive) {
+                                        EmptyView()
+                                    }
+                                    .hidden()
+                                    Button(action: {
+                                        isCameraPageActive = true
+                                    }, label: {
+                                        Image("Bee")
+                                            .resizable()
+                                            .renderingMode(.original)
+                                    })
                     .frame(width: 230, height: 200)
                     
                 }
                 Text("To find your **selfie** \n**buddy** and **emoji**")
+                    .foregroundColor(.black)
                     .font(.title)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
