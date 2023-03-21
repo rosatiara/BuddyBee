@@ -15,15 +15,20 @@ struct CameraPageView: View {
             VStack(alignment: .center){
                 HStack {
                     Button (action: {
-                        
+                        // back to random name
                     },
                             label: {
                         Image(systemName: "chevron.left")
                             .resizable()
-                            .frame(width: 12, height: 24)
-                            .foregroundColor(.blue)
+                            .frame(width: 15, height: 25)
+                            .foregroundColor(.black)
                             .padding()
                     })
+                    Spacer()
+                    Text("Selfie with\nJohanes Rio")
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .foregroundColor(.black)
                     Spacer()
                     Button (action: {
                         
@@ -31,20 +36,14 @@ struct CameraPageView: View {
                             label: {
                         Image(systemName: "square.and.arrow.up")
                             .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.blue)
+                            .frame(width: 20, height: 24)
+                            .foregroundColor(.black)
                             .padding()
+                            .border(.red)
                     })
                 }
-                Text("Selfie with\n**Nama Orang**")
-                    .font(.title)
-
-                Image(systemName: "heart") // camera here
-                    .resizable()
-                    .frame(width: 320, height: 500)
-                    .padding()
-                
-                ZStack {
+                CameraView()
+                ZStack { // Shutter Button
                     Circle()
                         .fill(.black)
                         .frame(width: 120, height: 120)
@@ -52,7 +51,7 @@ struct CameraPageView: View {
                     .fill(.white)
                     .frame(width: 100, height: 100)
                     Button (action: {
-                        
+                       
                     },
                             label: {
                             Image("Bee2")

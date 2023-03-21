@@ -12,17 +12,19 @@ struct CameraView: View {
     @StateObject var camera = CameraModel()
     var body: some View {
         ZStack {
+            Rectangle()
+                .background(Color.white)
+                .frame(width: 326, height: 497)
             CameraPreview(camera: camera)
-                .edgesIgnoringSafeArea(.all)
-            
-        }.onAppear(perform: {
-            camera.check()
-        })
+                .onAppear(perform: {
+                    camera.check()
+                })
+        }
     }
 }
 
 
-class CameraModel: ObservableObject {
+class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
@@ -48,7 +50,7 @@ class CameraModel: ObservableObject {
         }
     }
     
-    
+    // Setup camera..
     func setUp() {
         do {
             self.session.beginConfiguration()
@@ -69,6 +71,27 @@ class CameraModel: ObservableObject {
             
         } catch {
             print(error.localizedDescription)
+        }
+        
+        // Take picture...
+        func takePic() {
+            DispatchQueue.global(qos: .background).async {
+                self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+                self.session.stopRunning()
+                
+                DispatchQueue.main.async {
+                    withAnimation {self.isTaken.toggle()}
+                }
+            }
+        }
+        
+        // Produce photo output
+        func photoOutput(_ output: AVCaptureOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+            if error != nil {
+                return
+            }
+            print("Picture taken!")
+            
         }
     }
 }
@@ -92,11 +115,15 @@ struct CameraPreview: UIViewRepresentable{
         
         // preview properties
         camera.preview.videoGravity = .resizeAspectFill
+        camera.preview.frame = CGRect(x: 0, y: 0, width: 278, height: 380)
+        camera.preview.position = CGPoint(x: view.frame.width / 2.18, y: view.frame.height / 3.75)
+
         return view
         
     }
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+
     }
 }
+
 
