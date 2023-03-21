@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LandingPageView: View {
     var body: some View {
+        // test
         ZStack {
             Color(0xFEDF3F)
                 .ignoresSafeArea()
