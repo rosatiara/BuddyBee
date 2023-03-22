@@ -32,7 +32,9 @@ struct CameraPageView: View {
                             label: {
                             Image("Bee2")
                                 .resizable()
-                                .renderingMode(.original)
+                                .frame(width: 65, height: 65)
+                                .offset(x: 2)
+                                
                     })
                     .frame(width: 60, height: 60)
                 }
