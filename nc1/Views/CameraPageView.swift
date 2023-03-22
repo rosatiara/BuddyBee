@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct CameraPageView: View {
+    let learner = learners.randomElement()!
     @StateObject var camera = CameraModel()
     var body: some View {
         ZStack {
             Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center){
-                    Text("Take a selfie with.. \n 📸 \(learners.randomElement()!) 📸")
+                    Text("Take a selfie with.. \n 📸 \(learner) 📸")
                         .multilineTextAlignment(.center)
                         .font(.title3)
                         .foregroundColor(.black)
