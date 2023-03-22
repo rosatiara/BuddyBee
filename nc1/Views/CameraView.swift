@@ -17,10 +17,10 @@ struct CameraView: View {
                 .background(Color.white)
                 .frame(width: 326, height: 497)
             CameraPreview(camera: camera)
-            Image("Bee")
-                .resizable()
-                .frame(width: 200, height: 180)
-                .offset(x:30)
+//            Image("Bee")
+//                .resizable()
+//                .frame(width: 200, height: 180)
+//                .offset(x:30)
         }.onAppear(perform: {
             camera.check()
         })
@@ -34,6 +34,16 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var alert = false
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
+    private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    
+    override init() {
+        super.init()
+        check()
+        sessionQueue.async { [unowned self] in
+            self.setUp()
+            self.session.startRunning()
+        }
+    }
     
     // Check camera status
     func check() {
