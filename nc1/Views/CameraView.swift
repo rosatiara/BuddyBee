@@ -10,16 +10,20 @@ import AVFoundation
 
 struct CameraView: View {
     @StateObject var camera = CameraModel()
+ 
     var body: some View {
         ZStack {
             Rectangle()
                 .background(Color.white)
                 .frame(width: 326, height: 497)
             CameraPreview(camera: camera)
-                .onAppear(perform: {
-                    camera.check()
-                })
-        }
+//            Image("Bee")
+//                .resizable()
+//                .frame(width: 200, height: 180)
+//                .offset(x:30)
+        }.onAppear(perform: {
+            camera.check()
+        })
     }
 }
 
@@ -30,7 +34,18 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var alert = false
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
+    private let sessionQueue = DispatchQueue(label: "sessionQueue")
     
+    override init() {
+        super.init()
+        check()
+        sessionQueue.async { [unowned self] in
+            self.setUp()
+            self.session.startRunning()
+        }
+    }
+    
+    // Check camera status
     func check() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -54,6 +69,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     func setUp() {
         do {
             self.session.beginConfiguration()
+        
             // set device & camera to front
             let device =  AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
             
@@ -72,27 +88,28 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
-        // Take picture...
-        func takePic() {
-            DispatchQueue.global(qos: .background).async {
-                self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-                self.session.stopRunning()
-                
-                DispatchQueue.main.async {
-                    withAnimation {self.isTaken.toggle()}
-                }
+    }
+    
+    // Take picture...
+    func takePic() {
+        DispatchQueue.global(qos: .background).async {
+            self.session.startRunning()
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            //self.session.stopRunning()
+
+            DispatchQueue.global(qos: .userInitiated).async {
+                withAnimation {self.isTaken.toggle()}
             }
-        }
-        
-        // Produce photo output
-        func photoOutput(_ output: AVCaptureOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            if error != nil {
-                return
-            }
-            print("Picture taken!")
             
         }
+    }
+    
+    // Produce photo output
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:AVCapturePhoto, error: Error?) {
+        if error != nil {
+            return
+        }
+        print("Picture taken!")
     }
 }
 
@@ -102,7 +119,7 @@ struct CameraView_Previews: PreviewProvider {
     }
 }
 
-struct CameraPreview: UIViewRepresentable{
+struct CameraPreview: UIViewRepresentable {
     @ObservedObject var camera: CameraModel
     
     func makeUIView(context: Context) -> some UIView {
