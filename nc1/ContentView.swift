@@ -12,8 +12,7 @@ struct ContentView: View {
         NavigationView {
             LandingPageView()
                 .navigationBarTitle("")
-                .navigationBarBackButtonHidden(true)
-        }
+        }.accentColor(.black)
     }
 }
 

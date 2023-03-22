@@ -17,6 +17,10 @@ struct CameraView: View {
                 .background(Color.white)
                 .frame(width: 326, height: 497)
             CameraPreview(camera: camera)
+            Image("Bee")
+                .resizable()
+                .frame(width: 200, height: 180)
+                .offset(x:30)
         }.onAppear(perform: {
             camera.check()
         })
@@ -55,6 +59,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     func setUp() {
         do {
             self.session.beginConfiguration()
+        
             // set device & camera to front
             let device =  AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
             
@@ -78,12 +83,14 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     // Take picture...
     func takePic() {
         DispatchQueue.global(qos: .background).async {
+            self.session.startRunning()
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-            self.session.stopRunning()
-            
-            DispatchQueue.main.async {
+            //self.session.stopRunning()
+
+            DispatchQueue.global(qos: .userInitiated).async {
                 withAnimation {self.isTaken.toggle()}
             }
+            
         }
     }
     
