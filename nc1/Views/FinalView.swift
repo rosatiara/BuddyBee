@@ -22,29 +22,19 @@ struct FinalView_Previews: PreviewProvider {
     }
 }
 
-func takeScreenshot(_ sender: Any) //that is triggered when the button is pressed
-{
-    // Get the bounds of the screen
-    let screenBounds = UIScreen.main.bounds
+func takeScreenshot(_ sender: Any) {
+    guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+        let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
+        return
+    }
     
-    // Create a renderer with the bounds of the screen
+    let screenBounds = window.bounds
     let renderer = UIGraphicsImageRenderer(bounds: screenBounds)
-    
-    // Get the window scene to render from
-    guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else {
-        return
-    }
-    
-    // Get the window to render from
-    guard let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
-        return
-    }
-    
-    // Render the contents of the window to an image
     let screenshot = renderer.image { _ in
         window.drawHierarchy(in: screenBounds, afterScreenUpdates: true)
     }
     
-    // Save the image to the user's photo library
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
 }
+
+
