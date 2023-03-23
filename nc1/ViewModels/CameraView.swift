@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import CoreImage
 
 struct CameraView: View {
     @StateObject var camera = CameraModel()
@@ -29,12 +30,15 @@ struct CameraView: View {
 
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+    
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    
+    static let shared = CameraModel()
     
     override init() {
         super.init()
@@ -111,6 +115,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         }
         print("Picture taken!")
     }
+    
+
 }
 
 struct CameraView_Previews: PreviewProvider {
@@ -138,6 +144,9 @@ struct CameraPreview: UIViewRepresentable {
         return view
         
     }
+    
+
+    
     func updateUIView(_ uiView: UIViewType, context: Context) {
 
     }

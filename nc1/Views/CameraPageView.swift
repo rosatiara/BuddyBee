@@ -10,6 +10,9 @@ import SwiftUI
 struct CameraPageView: View {
     let learner = learners.randomElement()!
     @StateObject var camera = CameraModel()
+    
+    @State private var isConfettiAnimating = false
+    
     var body: some View {
         ZStack {
             Color(0xFEDF3F)
@@ -28,7 +31,15 @@ struct CameraPageView: View {
                     Circle()
                     .fill(.white)
                     .frame(width: 100, height: 100)
-                    Button (action: camera.takePic,
+                    Button (action: {
+                        camera.takePic()
+                        isConfettiAnimating = true
+//                        if isConfettiAnimating {
+//                            ConfettiView(isConfettiAnimating: $isConfettiAnimating)
+//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                            .transition(.opacity)
+//                        }
+                    } ,
                             label: {
                             Image("Bee2")
                                 .resizable()
@@ -39,7 +50,6 @@ struct CameraPageView: View {
                     .frame(width: 60, height: 60)
                 }
             }
-            
         }
     }
 }
