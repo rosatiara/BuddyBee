@@ -10,6 +10,12 @@ import AVFoundation
 import CoreImage
 
 struct CameraView: View {
+    var currentDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.string(from: Date())
+    }
+    
     @StateObject var camera = CameraModel()
  
     var body: some View {
@@ -17,11 +23,15 @@ struct CameraView: View {
             Rectangle()
                 .background(Color.white)
                 .frame(width: 326, height: 497)
+            
             CameraPreview(camera: camera)
 //            Image("Bee")
 //                .resizable()
 //                .frame(width: 200, height: 180)
 //                .offset(x:30)
+            Text("\(currentDate)")
+                .foregroundColor(.black)
+                .offset(x: 68, y: -227)
         }.onAppear(perform: {
             camera.check()
         })

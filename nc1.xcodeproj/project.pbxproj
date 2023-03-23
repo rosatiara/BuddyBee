@@ -48,6 +48,7 @@
 		3121B4EF29CC01670044202A /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		3121B4F329CC051E0044202A /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		3121B4F629CC0A4B0044202A /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
+		3121B4F829CC134A0044202A /* bee-0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "bee-0.json"; sourceTree = "<group>"; };
 		3178B5C729C611F000DEF964 /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalView.swift; sourceTree = "<group>"; };
 		3178B5CA29C6150B00DEF964 /* SliderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderButton.swift; sourceTree = "<group>"; };
 		31B9760E29C97A51001B525A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 				31F8805729C5B43A00041D4C /* ContentView.swift */,
 				31F8805929C5B43B00041D4C /* Assets.xcassets */,
 				31F8805B29C5B43B00041D4C /* Preview Content */,
+				3121B4F829CC134A0044202A /* bee-0.json */,
 			);
 			path = nc1;
 			sourceTree = "<group>";
