@@ -18,11 +18,16 @@ struct CameraPageView: View {
             Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center){
-                    Text("Take a selfie with.. \n 📸 \(learner) 📸")
-                        .multilineTextAlignment(.center)
+                VStack {
+                    Text("Take a selfie with.. \n ")
+                        .fontWeight(.regular)
                         .font(.title3)
-                        .foregroundColor(.black)
-                        .bold()
+                    +
+                    Text(learner)
+                        .fontWeight(.bold)
+                        .font(.title)
+                }.multilineTextAlignment(.center)
+                .foregroundColor(.black)
                 CameraView()
                 ZStack { // Shutter Button
                     Circle()
