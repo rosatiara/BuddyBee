@@ -23,9 +23,10 @@
 		31F8806729C5B43B00041D4C /* nc1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8806629C5B43B00041D4C /* nc1Tests.swift */; };
 		31F8807129C5B43B00041D4C /* nc1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8807029C5B43B00041D4C /* nc1UITests.swift */; };
 		31F8807329C5B43B00041D4C /* nc1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8807229C5B43B00041D4C /* nc1UITestsLaunchTests.swift */; };
-		31FF525729CDB85500CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525629CDB85500CB41F9 /* LandingPageView.swift */; };
 		31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525829CDB8BC00CB41F9 /* LottieView.swift */; };
 		31FF525B29CDB8D300CB41F9 /* lottiebee.json in Resources */ = {isa = PBXBuildFile; fileRef = 31FF525A29CDB8D300CB41F9 /* lottiebee.json */; };
+		31FF525D29CDC3A900CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525C29CDC3A900CB41F9 /* LandingPageView.swift */; };
+		31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */; };
 		75835F2929CD503F00A058D6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 75835F2829CD503F00A058D6 /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -66,9 +67,10 @@
 		31F8806C29C5B43B00041D4C /* nc1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nc1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F8807029C5B43B00041D4C /* nc1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1UITests.swift; sourceTree = "<group>"; };
 		31F8807229C5B43B00041D4C /* nc1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		31FF525629CDB85500CB41F9 /* LandingPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageView.swift; path = ../../../../nc1/nc1/Views/LandingPageView.swift; sourceTree = "<group>"; };
 		31FF525829CDB8BC00CB41F9 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		31FF525A29CDB8D300CB41F9 /* lottiebee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lottiebee.json; path = ../../../../../../Downloads/lottiebee.json; sourceTree = "<group>"; };
+		31FF525C29CDC3A900CB41F9 /* LandingPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageView.swift; path = ../../../../../../Downloads/LandingPageView.swift; sourceTree = "<group>"; };
+		31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +119,7 @@
 		3178B5C429C60F5200DEF964 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				31FF525629CDB85500CB41F9 /* LandingPageView.swift */,
+				31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */,
 				3178B5C729C611F000DEF964 /* FinalView.swift */,
 				2FA57A9129C96DC30018FBBC /* CameraPageView.swift */,
 				3121B4F329CC051E0044202A /* ConfettiView.swift */,
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				31F8806629C5B43B00041D4C /* nc1Tests.swift */,
+				31FF525C29CDC3A900CB41F9 /* LandingPageView.swift */,
 			);
 			path = nc1Tests;
 			sourceTree = "<group>";
@@ -343,8 +346,8 @@
 				3178B5C829C611F000DEF964 /* FinalView.swift in Sources */,
 				3121B4FC29CC89090044202A /* ToggleFilterBtn.swift in Sources */,
 				3121B4F429CC051E0044202A /* ConfettiView.swift in Sources */,
-				31FF525729CDB85500CB41F9 /* LandingPageView.swift in Sources */,
 				31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */,
+				31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */,
 				3121B4F029CC01670044202A /* FiltersViewModel.swift in Sources */,
 				31B9760F29C97A51001B525A /* CameraView.swift in Sources */,
 			);
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F8806729C5B43B00041D4C /* nc1Tests.swift in Sources */,
+				31FF525D29CDC3A900CB41F9 /* LandingPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
