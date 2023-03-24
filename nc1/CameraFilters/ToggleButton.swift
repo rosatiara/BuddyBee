@@ -6,26 +6,29 @@ struct ToggleButton: View {
   var label: String
 
   var body: some View {
-    Button(action: {
-      selected.toggle()
-    }, label: {
-      Image(systemName: label)
-    })
-    .padding(.vertical, 10)
-    .padding(.horizontal)
-    .foregroundColor(selected ? .white : .black)
-    .background(selected ? Color.blue : .white)
-    .animation(.easeInOut, value: 0.25)
-    .cornerRadius(10)
+    ZStack {
+        Circle()
+            .frame(width: 35, height: 35)
+        Button(action: {
+          selected.toggle()
+        }, label: {
+          Image(systemName: label)
+        })
+        .padding(.vertical, 5)
+        .padding(.horizontal, 5)
+        .foregroundColor(.black)
+        .background(selected ? Color(0xFFF36D) : .yellow)
+        .animation(.easeInOut, value: 0.25)
+        .cornerRadius(50)
+      }
   }
 }
 
 struct ToggleButton_Previews: PreviewProvider {
   static var previews: some View {
     ZStack {
-      Color.black
-
-      ToggleButton(selected: .constant(false), label: "globe")
+        Color.yellow.edgesIgnoringSafeArea(.all)
+      ToggleButton(selected: .constant(true), label: "camera.filters")
     }
   }
 }
