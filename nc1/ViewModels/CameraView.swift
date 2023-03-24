@@ -7,20 +7,32 @@
 
 import SwiftUI
 import AVFoundation
+import CoreImage
 
 struct CameraView: View {
+    var currentDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.string(from: Date())
+    }
+    
     @StateObject var camera = CameraModel()
  
     var body: some View {
         ZStack {
             Rectangle()
+                .colorInvert()
                 .background(Color.white)
                 .frame(width: 326, height: 497)
+            
             CameraPreview(camera: camera)
 //            Image("Bee")
 //                .resizable()
 //                .frame(width: 200, height: 180)
 //                .offset(x:30)
+            Text("\(currentDate)")
+                .foregroundColor(.black)
+                .offset(x: 58, y: -222)
         }.onAppear(perform: {
             camera.check()
         })
@@ -29,12 +41,15 @@ struct CameraView: View {
 
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+    
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    
+    static let shared = CameraModel()
     
     override init() {
         super.init()
@@ -111,6 +126,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         }
         print("Picture taken!")
     }
+    
+
 }
 
 struct CameraView_Previews: PreviewProvider {
@@ -138,6 +155,9 @@ struct CameraPreview: UIViewRepresentable {
         return view
         
     }
+    
+
+    
     func updateUIView(_ uiView: UIViewType, context: Context) {
 
     }

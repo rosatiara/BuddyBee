@@ -10,16 +10,25 @@ import SwiftUI
 struct CameraPageView: View {
     let learner = learners.randomElement()!
     @StateObject var camera = CameraModel()
+    
+    @State private var isConfettiAnimating = false
+    
     var body: some View {
         ZStack {
-            Color(0xFEDF3F)
+            LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
+            //Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center){
-                    Text("Take a selfie with.. \n 📸 \(learner) 📸")
-                        .multilineTextAlignment(.center)
+                VStack {
+                    Text("Take a selfie with.. \n ")
+                        .fontWeight(.regular)
                         .font(.title3)
-                        .foregroundColor(.black)
-                        .bold()
+                    +
+                    Text(learner)
+                        .fontWeight(.bold)
+                        .font(.title)
+                }.multilineTextAlignment(.center)
+                .foregroundColor(.black)
                 CameraView()
                 ZStack { // Shutter Button
                     Circle()
@@ -28,18 +37,23 @@ struct CameraPageView: View {
                     Circle()
                     .fill(.white)
                     .frame(width: 100, height: 100)
-                    Button (action: camera.takePic,
+                    Button (action: {
+                        camera.takePic()
+                        isConfettiAnimating = true
+//                        if isConfettiAnimating {
+//                            ConfettiView(isConfettiAnimating: $isConfettiAnimating)
+//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                            .transition(.opacity)
+//                        }
+                    } ,
                             label: {
-                            Image("Bee2")
-                                .resizable()
-                                .frame(width: 65, height: 65)
-                                .offset(x: 2)
+                        LottieView(lottieFile: "lottiebee")
+                            .frame(width: 100, height: 100)
                                 
                     })
                     .frame(width: 60, height: 60)
                 }
             }
-            
         }
     }
 }
