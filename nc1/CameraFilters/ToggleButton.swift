@@ -8,7 +8,7 @@ struct ToggleButton: View {
   var body: some View {
     ZStack {
         Circle()
-            .frame(width: 30, height: 30)
+            .frame(width: 45, height: 45)
         Button(action: {
           selected.toggle()
         }, label: {

@@ -7,9 +7,9 @@ struct ControlView: View {
 
   var body: some View {
       HStack(spacing: 12) {
-        ToggleButton(selected: $comicSelected, label: "globe")
-        ToggleButton(selected: $monoSelected, label: "globe")
-        ToggleButton(selected: $crystalSelected, label: "globe")
+        ToggleButton(selected: $comicSelected, label: "camera.filters")
+        ToggleButton(selected: $monoSelected, label: "camera.filters")
+        ToggleButton(selected: $crystalSelected, label: "camera.filters")
       }
   }
 }
@@ -22,8 +22,8 @@ struct ControlView_Previews: PreviewProvider {
 
       ControlView(
         comicSelected: .constant(false),
-        monoSelected: .constant(true),
-        crystalSelected: .constant(true))
+        monoSelected: .constant(false),
+        crystalSelected: .constant(false))
     }
   }
 }
