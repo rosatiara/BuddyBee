@@ -39,8 +39,8 @@ struct ToggleFilterBtn: View {
     struct ToggleFilterBtn_Previews: PreviewProvider {
         static var previews: some View {
             ZStack {
-                Color.yellow
-                ToggleFilterBtn(selected: .constant(false), label: "")
+                Color.yellow.edgesIgnoringSafeArea(.all)
+                ToggleFilterBtn(selected: .constant(false), label: "a")
             }
         }
     }

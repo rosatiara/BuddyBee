@@ -11,12 +11,24 @@ class FiltersViewModel: ObservableObject {
     @Published var error: Error?
     @Published var frame: CGImage?
     
-    var comicFilter = false
+    var sepiaFilter = false
+    var colorInvertFilter = false
     var monoFilter = false
-    var crystalFilter = false
+    var colorMapFilter = false
+    var instantFilter = false
+    var monochromeFilter = false
+    
+    
+    // FrameManager = CameraPreview
+    // CameraManager = CameraModel
+    
     
     private let context = CIContext()
-    private let cameraManager = CameraModel.shared
+    private let cameraModel = CameraModel.shared
+    
+    
+    
+
     
     
 }
