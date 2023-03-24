@@ -15,7 +15,8 @@ struct CameraPageView: View {
     
     var body: some View {
         ZStack {
-            Color(0xFEDF3F)
+            LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
+            //Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center){
                 VStack {
