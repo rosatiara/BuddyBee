@@ -9,7 +9,7 @@ struct FinalView: View {
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
     var body: some View {
-        VStack {
+//        VStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
@@ -34,9 +34,10 @@ struct FinalView: View {
                         .font(.system(size: fontsize))
                         .padding()
                     }
+                LottieView(lottieFile: "lottiebee")
+                    .frame(width: 50, height: 50)
     // -- Tambahin gambar bee lottie di sini ----
             }
-        }
         }
     func actionSheet() {
         guard let urlShare = URL(string:"https://developer.apple.com/xcode/swiftui/")
