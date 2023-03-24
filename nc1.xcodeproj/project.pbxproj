@@ -14,9 +14,12 @@
 		3121B4FA29CC86D30044202A /* FilterControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121B4F929CC86D30044202A /* FilterControlView.swift */; };
 		3121B4FC29CC89090044202A /* ToggleFilterBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121B4FB29CC89090044202A /* ToggleFilterBtn.swift */; };
 		3178B5C829C611F000DEF964 /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178B5C729C611F000DEF964 /* FinalView.swift */; };
-		3178B5CB29C6150B00DEF964 /* SliderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178B5CA29C6150B00DEF964 /* SliderButton.swift */; };
 		31B9760F29C97A51001B525A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9760E29C97A51001B525A /* CameraView.swift */; };
 		31E6BC0729CDD84E0043EC64 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0629CDD84E0043EC64 /* CameraModel.swift */; };
+		31E6BC0929CDD8F10043EC64 /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0829CDD8F10043EC64 /* CameraError.swift */; };
+		31E6BC0B29CDD9210043EC64 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0A29CDD9210043EC64 /* FrameManager.swift */; };
+		31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */; };
+		31E6BC0F29CDDA340043EC64 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */; };
 		31F8805629C5B43A00041D4C /* nc1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805529C5B43A00041D4C /* nc1App.swift */; };
 		31F8805829C5B43A00041D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805729C5B43A00041D4C /* ContentView.swift */; };
 		31F8805A29C5B43B00041D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F8805929C5B43B00041D4C /* Assets.xcassets */; };
@@ -56,9 +59,12 @@
 		3121B4F929CC86D30044202A /* FilterControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControlView.swift; sourceTree = "<group>"; };
 		3121B4FB29CC89090044202A /* ToggleFilterBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFilterBtn.swift; sourceTree = "<group>"; };
 		3178B5C729C611F000DEF964 /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalView.swift; sourceTree = "<group>"; };
-		3178B5CA29C6150B00DEF964 /* SliderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderButton.swift; sourceTree = "<group>"; };
 		31B9760E29C97A51001B525A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		31E6BC0629CDD84E0043EC64 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		31E6BC0829CDD8F10043EC64 /* CameraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
+		31E6BC0A29CDD9210043EC64 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
+		31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
+		31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		31F8805229C5B43A00041D4C /* nc1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nc1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F8805529C5B43A00041D4C /* nc1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1App.swift; sourceTree = "<group>"; };
 		31F8805729C5B43A00041D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,18 +137,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3178B5C929C614F900DEF964 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				3178B5CA29C6150B00DEF964 /* SliderButton.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		31E6BC0529CDD6620043EC64 /* CameraFilters */ = {
 			isa = PBXGroup;
 			children = (
 				31E6BC0629CDD84E0043EC64 /* CameraModel.swift */,
+				31E6BC0829CDD8F10043EC64 /* CameraError.swift */,
+				31E6BC0A29CDD9210043EC64 /* FrameManager.swift */,
+				31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */,
+				31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */,
 			);
 			path = CameraFilters;
 			sourceTree = "<group>";
@@ -175,7 +177,6 @@
 				31FF525829CDB8BC00CB41F9 /* LottieView.swift */,
 				3121B4F529CC0A360044202A /* Models */,
 				3121B4EE29CC014C0044202A /* ViewModels */,
-				3178B5C929C614F900DEF964 /* Components */,
 				3178B5C429C60F5200DEF964 /* Views */,
 				31F8805529C5B43A00041D4C /* nc1App.swift */,
 				31F8805729C5B43A00041D4C /* ContentView.swift */,
@@ -348,17 +349,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E6BC0F29CDDA340043EC64 /* FilterViewModel.swift in Sources */,
 				3121B4FA29CC86D30044202A /* FilterControlView.swift in Sources */,
 				3121B4F729CC0A4B0044202A /* Names.swift in Sources */,
 				2FA57A9229C96DC30018FBBC /* CameraPageView.swift in Sources */,
+				31E6BC0B29CDD9210043EC64 /* FrameManager.swift in Sources */,
 				31F8805829C5B43A00041D4C /* ContentView.swift in Sources */,
-				3178B5CB29C6150B00DEF964 /* SliderButton.swift in Sources */,
 				31F8805629C5B43A00041D4C /* nc1App.swift in Sources */,
 				31E6BC0729CDD84E0043EC64 /* CameraModel.swift in Sources */,
 				3178B5C829C611F000DEF964 /* FinalView.swift in Sources */,
 				3121B4FC29CC89090044202A /* ToggleFilterBtn.swift in Sources */,
 				3121B4F429CC051E0044202A /* ConfettiView.swift in Sources */,
 				31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */,
+				31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */,
+				31E6BC0929CDD8F10043EC64 /* CameraError.swift in Sources */,
 				31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */,
 				3121B4F029CC01670044202A /* FiltersViewModel.swift in Sources */,
 				31B9760F29C97A51001B525A /* CameraView.swift in Sources */,

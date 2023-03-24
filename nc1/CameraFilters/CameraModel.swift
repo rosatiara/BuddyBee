@@ -10,6 +10,8 @@ import AVFoundation
 import CoreImage
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+    static let shared = CameraModel()
+    @Published var error: CameraError?
     
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
@@ -17,9 +19,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var output = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
-    
-    static let shared = CameraModel()
-    
+        
     override init() {
         super.init()
         check()
