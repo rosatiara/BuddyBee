@@ -46,10 +46,8 @@ struct CameraPageView: View {
 //                        }
                     } ,
                             label: {
-                            Image("Bee2")
-                                .resizable()
-                                .frame(width: 65, height: 65)
-                                .offset(x: 2)
+                        LottieView(lottieFile: "lottiebee")
+                            .frame(width: 100, height: 100)
                                 
                     })
                     .frame(width: 60, height: 60)

@@ -21,6 +21,7 @@ struct CameraView: View {
     var body: some View {
         ZStack {
             Rectangle()
+                .colorInvert()
                 .background(Color.white)
                 .frame(width: 326, height: 497)
             
@@ -31,7 +32,7 @@ struct CameraView: View {
 //                .offset(x:30)
             Text("\(currentDate)")
                 .foregroundColor(.black)
-                .offset(x: 68, y: -227)
+                .offset(x: 58, y: -222)
         }.onAppear(perform: {
             camera.check()
         })
