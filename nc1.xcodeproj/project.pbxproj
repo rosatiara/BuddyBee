@@ -20,6 +20,7 @@
 		31E6BC0B29CDD9210043EC64 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0A29CDD9210043EC64 /* FrameManager.swift */; };
 		31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */; };
 		31E6BC0F29CDDA340043EC64 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */; };
+		31E6BC1129CDDB930043EC64 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC1029CDDB930043EC64 /* ToggleButton.swift */; };
 		31F8805629C5B43A00041D4C /* nc1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805529C5B43A00041D4C /* nc1App.swift */; };
 		31F8805829C5B43A00041D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805729C5B43A00041D4C /* ContentView.swift */; };
 		31F8805A29C5B43B00041D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F8805929C5B43B00041D4C /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		31E6BC0A29CDD9210043EC64 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
 		31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
 		31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		31E6BC1029CDDB930043EC64 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		31F8805229C5B43A00041D4C /* nc1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nc1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F8805529C5B43A00041D4C /* nc1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1App.swift; sourceTree = "<group>"; };
 		31F8805729C5B43A00041D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				31E6BC0A29CDD9210043EC64 /* FrameManager.swift */,
 				31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */,
 				31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */,
+				31E6BC1029CDDB930043EC64 /* ToggleButton.swift */,
 			);
 			path = CameraFilters;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				3121B4F429CC051E0044202A /* ConfettiView.swift in Sources */,
 				31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */,
 				31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */,
+				31E6BC1129CDDB930043EC64 /* ToggleButton.swift in Sources */,
 				31E6BC0929CDD8F10043EC64 /* CameraError.swift in Sources */,
 				31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */,
 				3121B4F029CC01670044202A /* FiltersViewModel.swift in Sources */,
