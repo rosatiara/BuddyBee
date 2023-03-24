@@ -8,14 +8,14 @@ struct ToggleButton: View {
   var body: some View {
     ZStack {
         Circle()
-            .frame(width: 35, height: 35)
+            .frame(width: 30, height: 30)
         Button(action: {
           selected.toggle()
         }, label: {
           Image(systemName: label)
         })
-        .padding(.vertical, 5)
-        .padding(.horizontal, 5)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 10)
         .foregroundColor(.black)
         .background(selected ? Color(0xFFF36D) : .yellow)
         .animation(.easeInOut, value: 0.25)
