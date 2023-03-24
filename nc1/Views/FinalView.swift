@@ -18,7 +18,9 @@ struct FinalView: View {
 
 struct FinalView_Previews: PreviewProvider {
     static var previews: some View {
-        FinalView()
+        ZStack {
+            
+        }
     }
 }
 

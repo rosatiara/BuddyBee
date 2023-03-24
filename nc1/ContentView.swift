@@ -13,6 +13,7 @@ struct ContentView: View {
             LandingPageView()
                 .navigationBarTitle("")
         }.accentColor(.black).colorScheme(.light)
+      //  FinalView()
     }
 }
 

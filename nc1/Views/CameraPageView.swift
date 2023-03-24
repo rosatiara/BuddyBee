@@ -58,12 +58,6 @@ struct CameraPageView: View {
                     .frame(width: 100, height: 100)
                     Button (action: {
                         camera.takePic()
-                        isConfettiAnimating = true
-//                        if isConfettiAnimating {
-//                            ConfettiView(isConfettiAnimating: $isConfettiAnimating)
-//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                            .transition(.opacity)
-//                        }
                     } ,
                             label: {
                         LottieView(lottieFile: "lottiebee")
