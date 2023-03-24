@@ -4,16 +4,60 @@ import AVFoundation
 
 
 struct FinalView: View {
-    @State private var caption = ""
-    var currentDate: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.string(from: Date())
-    }
-//    @StateObject var camera = CameraModel()
-    //@StateObject var camera = CameraModel()
-    //@Binding var output = AVCapturePhotoOutput()
+    let emoji = emojis.randomElement()!
+    let fontsize: CGFloat = 50.0
+    @StateObject var camera = CameraModel()
     var body: some View {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
+            //Color(0xFEDF3F)
+                .edgesIgnoringSafeArea(.all)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing){
+                    Button(action:{},
+                            label:{
+                            Image(systemName: "square.and.arrow.down")
+                            })
+                            Button(action: actionSheet,
+                                label:{
+                                Image(systemName: "square.and.arrow.up")
+                                })
+                    }
+                }
+// ------ INI DIGANTI TEXTFIELD ------
+//            VStack(alignment: .center){
+//                VStack {
+//                    Text("Take a selfie with.. \n ")
+//                        .fontWeight(.regular)
+//                        .font(.title3)
+//                    +
+//                    Text(learner)
+//                        .fontWeight(.bold)
+//                        .font(.title)
+//                }.multilineTextAlignment(.center)
+//                .foregroundColor(.black)
+                ZStack {
+                    CameraView()
+                    Text(emoji)
+                    .font(.system(size: fontsize))
+                    .padding()
+                }
+// -- Tambahin gambar bee lottie di sini ---- 
+            }
+        }
+    func actionSheet() {
+        guard let urlShare = URL(string:"https://developer.apple.com/xcode/swiftui/")
+        else {return }
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let window = windowScene.windows.first {
+            let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+            window.rootViewController?.present(activityVC, animated: true, completion: nil)
+        }
+    }
+}
+
+struct FinalView_Previews: PreviewProvider {
+    static var previews: some View {
         ZStack {
             Color(0xFEDF3F)
                 .edgesIgnoringSafeArea(.all)
