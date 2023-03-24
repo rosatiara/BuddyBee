@@ -1,10 +1,12 @@
 import SwiftUI
 import Foundation
 import AVFoundation
+import DataField
 
 
 struct FinalView: View {
     @State private var caption = ""
+    private let characterLimit = 30 // batasin jumlah karakter caption
     let emoji = emojis.randomElement()!
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
@@ -16,7 +18,7 @@ struct FinalView: View {
                     .edgesIgnoringSafeArea(.all)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Button(action:{},
+                        Button(action:takeScreenshotAndSave,
                                 label:{
                                 Image(systemName: "square.and.arrow.down")
                                 })
@@ -26,7 +28,8 @@ struct FinalView: View {
                                     })
                         }
                     }
-                TextField("edit caption", text: $caption)
+                DataField("Write your buddy-bee honey-like buzz-words", data: $caption) { text in text.count < 30 }
+//                TextField("Write your buddy-bee honey-like buzz-words", text: $caption)
                     .padding()
                     ZStack {
                         CameraView()
