@@ -24,9 +24,9 @@
 		31F8807129C5B43B00041D4C /* nc1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8807029C5B43B00041D4C /* nc1UITests.swift */; };
 		31F8807329C5B43B00041D4C /* nc1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8807229C5B43B00041D4C /* nc1UITestsLaunchTests.swift */; };
 		31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525829CDB8BC00CB41F9 /* LottieView.swift */; };
-		31FF525B29CDB8D300CB41F9 /* lottiebee.json in Resources */ = {isa = PBXBuildFile; fileRef = 31FF525A29CDB8D300CB41F9 /* lottiebee.json */; };
 		31FF525D29CDC3A900CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525C29CDC3A900CB41F9 /* LandingPageView.swift */; };
 		31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */; };
+		751D9D6229CDC85F002CE319 /* lottiebee.json in Resources */ = {isa = PBXBuildFile; fileRef = 751D9D6129CDC85F002CE319 /* lottiebee.json */; };
 		75835F2929CD503F00A058D6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 75835F2829CD503F00A058D6 /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -68,9 +68,9 @@
 		31F8807029C5B43B00041D4C /* nc1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1UITests.swift; sourceTree = "<group>"; };
 		31F8807229C5B43B00041D4C /* nc1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		31FF525829CDB8BC00CB41F9 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
-		31FF525A29CDB8D300CB41F9 /* lottiebee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lottiebee.json; path = ../../../../../../Downloads/lottiebee.json; sourceTree = "<group>"; };
 		31FF525C29CDC3A900CB41F9 /* LandingPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageView.swift; path = ../../../../../../Downloads/LandingPageView.swift; sourceTree = "<group>"; };
 		31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		751D9D6129CDC85F002CE319 /* lottiebee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottiebee.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,7 @@
 		31F8805429C5B43A00041D4C /* nc1 */ = {
 			isa = PBXGroup;
 			children = (
-				31FF525A29CDB8D300CB41F9 /* lottiebee.json */,
+				751D9D6129CDC85F002CE319 /* lottiebee.json */,
 				31FF525829CDB8BC00CB41F9 /* LottieView.swift */,
 				3121B4F529CC0A360044202A /* Models */,
 				3121B4EE29CC014C0044202A /* ViewModels */,
@@ -311,8 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F8805D29C5B43B00041D4C /* Preview Assets.xcassets in Resources */,
+				751D9D6229CDC85F002CE319 /* lottiebee.json in Resources */,
 				31F8805A29C5B43B00041D4C /* Assets.xcassets in Resources */,
-				31FF525B29CDB8D300CB41F9 /* lottiebee.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nc1/Preview Content\"";
-				DEVELOPMENT_TEAM = HHQRX4Z95P;
+				DEVELOPMENT_TEAM = HS7NCLHCHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera used for previews";
@@ -523,7 +523,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nc1;
+				PRODUCT_BUNDLE_IDENTIFIER = PunyaRivianBaru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -540,7 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nc1/Preview Content\"";
-				DEVELOPMENT_TEAM = HHQRX4Z95P;
+				DEVELOPMENT_TEAM = HS7NCLHCHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera used for previews";
@@ -554,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nc1;
+				PRODUCT_BUNDLE_IDENTIFIER = PunyaRivianBaru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
