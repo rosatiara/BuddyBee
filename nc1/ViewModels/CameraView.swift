@@ -16,7 +16,6 @@ struct CameraView: View {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: Date())
     }
-    
     @StateObject var camera = CameraModel()
     
     var body: some View {

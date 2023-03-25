@@ -21,7 +21,7 @@ struct FinalView: View {
                 .edgesIgnoringSafeArea(.all)
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Button(action:takeScreenshotAndSave,
+                        Button(action:takeScreenshot,
                                label:{
                             Image(systemName: "square.and.arrow.down")
                         })
@@ -31,10 +31,9 @@ struct FinalView: View {
                         })
                     }
                 }
-            ScrollView {
-                ScrollViewReader { scrollView in
+            //
                     VStack {
-                        DataField("Write your buddy-bee honey-like buzz-words!", data: $caption) { text in text.count < 30 }
+                        TextField("Write honey-like buzz-words!", text: $caption)//{ text in text.count < 30 }
                             .padding()
                             .padding(.leading, 30)
                             .frame(alignment: .center)
@@ -65,8 +64,8 @@ struct FinalView: View {
                             .frame(width: 200, height: 200)
                             .offset(y: -22)
                     }
-                }
-            }
+//                }
+//            }
         }
     }
     
@@ -83,44 +82,20 @@ struct FinalView: View {
 }
 
 
-func takeScreenshot(_ sender: Any) {
+func takeScreenshot() {
     guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
           let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
         return
     }
-    
+
     let screenBounds = window.bounds
     let renderer = UIGraphicsImageRenderer(bounds: screenBounds)
     let screenshot = renderer.image { _ in
         window.drawHierarchy(in: screenBounds, afterScreenUpdates: true)
     }
-    
+
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
 }
-
-    
-func takeScreenshotAndSave() {
-
-    guard let scene = UIApplication.shared.connectedScenes.first else {
-        return
-    }
-    
-    guard let window = (scene as? UIWindowScene)?.windows.first else {
-        return
-    }
-    
-    UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
-    
-    window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
-    
-    guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else {
-        return
-    }
-    UIGraphicsEndImageContext()
-    
-    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
-}
-
 
 struct ImageView: View {
     @State var image: UIImage?
