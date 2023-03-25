@@ -87,7 +87,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
             self.session.startRunning()
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
             self.session.stopRunning()
-            
+
             DispatchQueue.global(qos: .userInitiated).async {
                 withAnimation {self.isTaken.toggle()}
             }

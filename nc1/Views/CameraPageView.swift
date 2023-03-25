@@ -21,18 +21,6 @@ struct CameraPageView: View {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
                     .edgesIgnoringSafeArea(.all)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing){
-                            Button(action:{},
-                                   label:{
-                                Image(systemName: "square.and.arrow.down")
-                            })
-                            Button(action: actionSheet,
-                                   label:{
-                                Image(systemName: "square.and.arrow.up")
-                            })
-                        }
-                    }
                 VStack(alignment: .center){
                     VStack {
                         Text("Take a selfie with.. \n ")

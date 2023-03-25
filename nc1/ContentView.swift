@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            CameraPageView()
-            //LandingPageView()
+            //CameraPageView()
+            LandingPageView()
                 .navigationBarTitle("")
         }.accentColor(.black).colorScheme(.light)
     }
