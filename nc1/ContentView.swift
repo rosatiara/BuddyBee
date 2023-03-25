@@ -13,7 +13,6 @@ struct ContentView: View {
             LandingPageView()
                 .navigationBarTitle("")
         }.accentColor(.black).colorScheme(.light)
-      //  FinalView()
     }
 }
 
@@ -22,3 +21,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

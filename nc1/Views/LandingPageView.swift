@@ -27,7 +27,7 @@ struct LandingPageView: View {
                         //.fill(.white)
                         //.frame(width: 230, height: 230)
                     
-                    NavigationLink(destination: CameraPageView(), isActive: $isCameraPageActive) {
+                NavigationLink(destination: CameraPageView(), isActive: $isCameraPageActive) {
                                         EmptyView()
                                     }
                                     .hidden()

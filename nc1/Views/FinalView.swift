@@ -11,7 +11,6 @@ struct FinalView: View {
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
     var body: some View {
-//        VStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
@@ -54,13 +53,6 @@ struct FinalView: View {
 
 }
 
-struct FinalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            
-        }
-    }
-}
 
 func takeScreenshot(_ sender: Any) {
     guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
