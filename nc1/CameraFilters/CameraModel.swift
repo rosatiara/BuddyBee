@@ -56,7 +56,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
     func setUp() {
         do {
             self.session.beginConfiguration()
-        
+            
             // set device & camera to front
             let device =  AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
             
@@ -83,7 +83,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
             self.session.startRunning()
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
             //self.session.stopRunning()
-
+            
             DispatchQueue.global(qos: .userInitiated).async {
                 withAnimation {self.isTaken.toggle()}
             }
@@ -104,10 +104,10 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-
+        
         // Create a CIImage from the pixel buffer
         var ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-
+        
         // Apply filter if there is one
         if let filter = filter {
             filter.setValue(ciImage, forKey: kCIInputImageKey)
@@ -116,15 +116,15 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
             }
             ciImage = outputImage
         }
-
+        
         // Create a CGImage from the CIImage
         guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else {
             return
         }
-
+        
         // Use the CGImage for processing or display
         // ...
     }
-
+    
 }
 

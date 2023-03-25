@@ -18,7 +18,7 @@ struct CameraView: View {
     }
     
     @StateObject var camera = CameraModel()
- 
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -64,7 +64,7 @@ struct CameraPreview: UIViewRepresentable {
         camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
         camera.preview.frame = view.frame
         view.layer.addSublayer(camera.preview)
-
+        
         
         camera.session.beginConfiguration()
         
@@ -91,7 +91,7 @@ struct CameraPreview: UIViewRepresentable {
         let swipe = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleSwipe(_:)))
         swipe.direction = [.left, .right]
         view.addGestureRecognizer(swipe)
-
+        
         return view
         
     }
@@ -99,7 +99,7 @@ struct CameraPreview: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         // No need to update the view when camera or filterIndex changes
     }
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -108,8 +108,8 @@ struct CameraPreview: UIViewRepresentable {
         let name: String
         let filter: CIFilter?
     }
-
-
+    
+    
 }
 
 

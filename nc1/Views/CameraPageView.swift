@@ -23,14 +23,14 @@ struct CameraPageView: View {
                     .edgesIgnoringSafeArea(.all)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Button(action:{},
-                                label:{
+                            Button(action:{},
+                                   label:{
                                 Image(systemName: "square.and.arrow.down")
-                                })
-                                Button(action: actionSheet,
-                                    label:{
-                                    Image(systemName: "square.and.arrow.up")
-                                    })
+                            })
+                            Button(action: actionSheet,
+                                   label:{
+                                Image(systemName: "square.and.arrow.up")
+                            })
                         }
                     }
                 VStack(alignment: .center){
@@ -43,27 +43,27 @@ struct CameraPageView: View {
                             .fontWeight(.bold)
                             .font(.title)
                     }.multilineTextAlignment(.center)
-                    .foregroundColor(.black)
-     //               ZStack {
-                        CameraView()
-    //                    Text(emoji)
-    //                    .font(.system(size: fontsize))
-    //                    .padding()
-    //                }
+                        .foregroundColor(.black)
+                    //               ZStack {
+                    CameraView()
+                    //                    Text(emoji)
+                    //                    .font(.system(size: fontsize))
+                    //                    .padding()
+                    //                }
                     ZStack { // Shutter Button
                         Circle()
                             .fill(.black)
                             .frame(width: 120, height: 120)
                         Circle()
-                        .fill(.white)
-                        .frame(width: 100, height: 100)
+                            .fill(.white)
+                            .frame(width: 100, height: 100)
                         Button (action: {
                             camera.takePic()
                         } ,
                                 label: {
                             LottieView(lottieFile: "lottiebee")
                                 .frame(width: 100, height: 100)
-                                    
+                            
                         })
                         .frame(width: 60, height: 60)
                     }
@@ -77,7 +77,7 @@ struct CameraPageView: View {
         guard let urlShare = URL(string:"https://developer.apple.com/xcode/swiftui/")
         else {return }
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let window = windowScene.windows.first {
+           let window = windowScene.windows.first {
             let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
             window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
