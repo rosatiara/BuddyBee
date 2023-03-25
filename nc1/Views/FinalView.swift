@@ -2,13 +2,15 @@ import SwiftUI
 import Foundation
 import AVFoundation
 import DataField
+import UIKit
 
 
 struct FinalView: View {
     @State private var caption = ""
     private let characterLimit = 30 // batasin jumlah karakter caption
-    let emoji = emojis.randomElement()!
+    let emoji: String
     let fontsize: CGFloat = 50.0
+    @State var capturedImage: UIImage?
     @StateObject var camera = CameraModel()
     var body: some View {
         ZStack {
@@ -25,27 +27,45 @@ struct FinalView: View {
                             Image(systemName: "square.and.arrow.up")
                         })
                     }
-                }.border(.blue)
+                }
             ScrollView {
                 ScrollViewReader { scrollView in
                     VStack {
-                        DataField("Write your buddy-bee honey-like buzz-words", data: $caption) { text in text.count < 30 }
+                        DataField("Write your buddy-bee honey-like buzz-words!", data: $caption) { text in text.count < 30 }
                             .padding()
-                            .border(.blue)
+                            .padding(.leading, 30)
+                            .frame(alignment: .center)
                         ZStack {
-                            CameraView()
+                            // polaroid
+                            Rectangle()
+                                .colorInvert()
+                                .background(Color.white)
+                                .frame(width: 350, height: 497)
+                                .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15),
+                                        radius: 2,
+                                        x: 4,
+                                        y: 4)
+                                .shadow(color: .white, radius: 2, x: -1, y: -1)
+                            if let image = camera.capturedImage { // hasil foto
+                                Image(uiImage: image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 300, height: 300)
+                                                .border(.red)
+                            }
                             Text(emoji)
                                 .font(.system(size: fontsize))
                                 .padding()
                         }
                         LottieView(lottieFile: "lottiebee")
-                            .frame(width: 50, height: 50)
-                            .border(.red)
+                            .frame(width: 200, height: 200)
+                            .offset(y: -22)
                     }
                 }
             }
         }
     }
+    
     func actionSheet() {
         guard let urlShare = URL(string:"https://developer.apple.com/xcode/swiftui/")
         else {return }
@@ -75,78 +95,36 @@ func takeScreenshot(_ sender: Any) {
 }
 
     
-struct FinalView_Previews: PreviewProvider {
-    static var previews: some View {
-        FinalView()
-    }
-}
-    
 func takeScreenshotAndSave() {
-    // Get the current scene
+
     guard let scene = UIApplication.shared.connectedScenes.first else {
         return
     }
     
-    // Get the window for the scene
     guard let window = (scene as? UIWindowScene)?.windows.first else {
         return
     }
     
-    // Begin the graphics context
     UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
     
-    // Render the window into the graphics context
     window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
     
-    // Get the screenshot as an image
     guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else {
         return
     }
-    
-    // End the graphics context
     UIGraphicsEndImageContext()
     
-    // Save the screenshot to the Photos library
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
 }
 
 
-//struct TextFieldWrapper: UIViewRepresentable {
-//
-//    @Binding var text: String
-//
-//    func makeUIView(context: Context) -> UITextField {
-//        let textField = UITextField(frame: .zero)
-//        textField.borderStyle = .roundedRect
-//        textField.font = UIFont.systemFont(ofSize: 15)
-//        textField.delegate = context.coordinator
-//        return textField
-//    }
-//
-//    func updateUIView(_ textField: UITextField, context: Context) {
-//        textField.text = text
-//    }
-//
-//    func makeCoordinator() -> Coordinator {
-//        Coordinator(self)
-//    }
-//
-//    class Coordinator: NSObject, UITextFieldDelegate {
-//
-//        var parent: TextFieldWrapper
-//
-//        init(_ textFieldWrapper: TextFieldWrapper) {
-//            self.parent = textFieldWrapper
-//        }
-//
-//        func textFieldDidChangeSelection(_ textField: UITextField) {
-//            parent.text = textField.text ?? ""
-//        }
-//
-//    }
-//}
-
-    
-
-//add to info.plist fileprivate<key>NSPhotoLibraryAddUsageDescription</key>
-//<string>Save screenshots to the Photos library</string>
+struct ImageView: View {
+    var image: Image
+    var body: some View {
+        VStack {
+            image
+                .resizable()
+                .scaledToFit()
+        }
+    }
+}

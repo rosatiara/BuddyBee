@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LandingPageView: View {
     @State private var isCameraPageActive = false
-    var confettiView: ConfettiView!
     var body: some View {
         // test
         ZStack {

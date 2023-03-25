@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CameraPageView: View {
     let learner = learners.randomElement()!
-    let emoji = emojis.randomElement()!
+    @State private var emoji = emojis.randomElement()!
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
     
     @State private var isFinalViewActive = false
     
     var body: some View {
-        NavigationLink(destination: FinalView(), isActive: $isFinalViewActive) {
+        NavigationLink(destination: FinalView(emoji: emoji), isActive: $isFinalViewActive) {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
@@ -50,7 +50,7 @@ struct CameraPageView: View {
                             .font(.system(size: fontsize))
                             .padding()
                     }
-                    ZStack { 
+                    ZStack {
                         Circle()
                             .fill(.black)
                             .frame(width: 120, height: 120)

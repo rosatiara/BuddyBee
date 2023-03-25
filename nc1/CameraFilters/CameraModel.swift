@@ -8,11 +8,15 @@
 import SwiftUI
 import AVFoundation
 import CoreImage
+import UIKit
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    @Published var capturedImage: UIImage?
+    var completionHandler: ((UIImage?) -> Void)?
+    
     static let shared = CameraModel()
     @Published var error: CameraError?
-    
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
@@ -96,16 +100,27 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         if error != nil {
             return
         }
+        if let imageData = photo.fileDataRepresentation() {
+                    if let uiImage = UIImage(data: imageData) {
+                        completionHandler?(uiImage)
+                    }
+                }
         print("Picture taken!")
     }
     
+    func setCapturedImage(_ image: UIImage) {
+        DispatchQueue.main.async {
+            self.capturedImage = image
+        }
+    }
+
+    
+    // Filters
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        // Convert the sample buffer to a pixel buffer
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
         
-        // Create a CIImage from the pixel buffer
         var ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         
         // Apply filter if there is one
@@ -117,13 +132,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
             ciImage = outputImage
         }
         
-        // Create a CGImage from the CIImage
         guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else {
             return
         }
-        
-        // Use the CGImage for processing or display
-        // ...
     }
     
 }
