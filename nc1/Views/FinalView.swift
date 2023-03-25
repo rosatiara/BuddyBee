@@ -6,12 +6,15 @@ import UIKit
 
 
 struct FinalView: View {
+    // caption & emoji
     @State private var caption = ""
     private let characterLimit = 30 // batasin jumlah karakter caption
     let emoji: String
     let fontsize: CGFloat = 50.0
-    @State var image: UIImage?
-    @StateObject var camera = CameraModel()
+    
+    // hasil foto
+    @ObservedObject var camera = CameraModel()
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
@@ -36,8 +39,7 @@ struct FinalView: View {
                             .padding(.leading, 30)
                             .frame(alignment: .center)
                         ZStack {
-                            // polaroid
-                            Rectangle()
+                            Rectangle() // polaroid
                                 .colorInvert()
                                 .background(Color.white)
                                 .frame(width: 350, height: 497)
@@ -46,13 +48,15 @@ struct FinalView: View {
                                         x: 4,
                                         y: 4)
                                 .shadow(color: .white, radius: 2, x: -1, y: -1)
-                            if let image = camera.image { // hasil foto
-                                Image(uiImage: image)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 300, height: 300)
-                                                .border(.red)
-                            }
+                            if let image = camera.capturedImage { // hasil foto
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 300, height: 300)
+                                        .border(.red)
+                                } else {
+                                    Text("nooooooooo iiiiiimmaaaageee")
+                                }
                             Text(emoji)
                                 .font(.system(size: fontsize))
                                 .padding()
@@ -119,12 +123,18 @@ func takeScreenshotAndSave() {
 
 
 struct ImageView: View {
-    var image: Image
+    @State var image: UIImage?
+    
     var body: some View {
-        VStack {
-            image
-                .resizable()
-                .scaledToFit()
+        Group {
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Text("No Image")
+            }
         }
     }
 }
+

@@ -12,7 +12,7 @@ import UIKit
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    @Published var image: UIImage?
+    @Published var capturedImage: Image?
     var completionHandler: ((UIImage?) -> Void)?
     
     static let shared = CameraModel()
@@ -86,7 +86,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         DispatchQueue.global(qos: .background).async {
             self.session.startRunning()
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-            //self.session.stopRunning()
+            self.session.stopRunning()
             
             DispatchQueue.global(qos: .userInitiated).async {
                 withAnimation {self.isTaken.toggle()}
@@ -96,30 +96,33 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
     }
     
     // Produce photo output
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:AVCapturePhoto, error: Error?) {
-        if error != nil {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print("Error capturing photo: \(error.localizedDescription)")
+            self.completionHandler?(nil)
             return
         }
-        print("Picture taken!")
-    }
-    
-    func getImageFromSampleBuffer(buffer: CMSampleBuffer)-> UIImage? {
-        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-            let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-            let context = CIContext()
-            let imageRect = CGRect(x: 0, y: 0, width: 310, height: 380)
-            if let image = context.createCGImage(ciImage, from: imageRect) {
-                return UIImage(cgImage: image, scale: 1.0, orientation: .upMirrored)
-            }
+        
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Error extracting image data from photo")
+            self.completionHandler?(nil)
+            return
         }
-        return nil
+        
+        guard let image = UIImage(data: imageData) else {
+            print("Error converting image data to UIImage")
+            self.completionHandler?(nil)
+            return
+        }
+        
+        print("Picture taken!")
+        self.capturedImage = Image(uiImage: image)
+        self.completionHandler?(image)
     }
-    
-//    func setCapturedImage(_ image: UIImage) {
-//        DispatchQueue.main.async {
-//            self.capturedImage = image
-//        }
-//    }
+
+
+
+
 
     
     // Filters
