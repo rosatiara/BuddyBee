@@ -8,11 +8,15 @@
 import SwiftUI
 import AVFoundation
 import CoreImage
+import UIKit
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    @Published var capturedImage: Image?
+    var completionHandler: ((UIImage?) -> Void)?
+    
     static let shared = CameraModel()
     @Published var error: CameraError?
-    
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
@@ -56,7 +60,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
     func setUp() {
         do {
             self.session.beginConfiguration()
-        
+            
             // set device & camera to front
             let device =  AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
             
@@ -82,7 +86,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         DispatchQueue.global(qos: .background).async {
             self.session.startRunning()
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-            //self.session.stopRunning()
+            self.session.stopRunning()
 
             DispatchQueue.global(qos: .userInitiated).async {
                 withAnimation {self.isTaken.toggle()}
@@ -92,22 +96,43 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
     }
     
     // Produce photo output
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:AVCapturePhoto, error: Error?) {
-        if error != nil {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print("Error capturing photo: \(error.localizedDescription)")
+            self.completionHandler?(nil)
             return
         }
+        
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Error extracting image data from photo")
+            self.completionHandler?(nil)
+            return
+        }
+        
+        guard let image = UIImage(data: imageData) else {
+            print("Error converting image data to UIImage")
+            self.completionHandler?(nil)
+            return
+        }
+        
         print("Picture taken!")
+        self.capturedImage = Image(uiImage: image)
+        self.completionHandler?(image)
     }
+
+
+
+
+
     
+    // Filters
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        // Convert the sample buffer to a pixel buffer
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-
-        // Create a CIImage from the pixel buffer
+        
         var ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-
+        
         // Apply filter if there is one
         if let filter = filter {
             filter.setValue(ciImage, forKey: kCIInputImageKey)
@@ -116,15 +141,11 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
             }
             ciImage = outputImage
         }
-
-        // Create a CGImage from the CIImage
+        
         guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else {
             return
         }
-
-        // Use the CGImage for processing or display
-        // ...
     }
-
+    
 }
 

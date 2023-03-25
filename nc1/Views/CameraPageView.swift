@@ -9,30 +9,18 @@ import SwiftUI
 
 struct CameraPageView: View {
     let learner = learners.randomElement()!
-    let emoji = emojis.randomElement()!
+    @State private var emoji = emojis.randomElement()!
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
     
     @State private var isFinalViewActive = false
     
     var body: some View {
-        NavigationLink(destination: FinalView(), isActive: $isFinalViewActive) {
+        NavigationLink(destination: FinalView(emoji: emoji), isActive: $isFinalViewActive) {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
                     .edgesIgnoringSafeArea(.all)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Button(action:{},
-                                label:{
-                                Image(systemName: "square.and.arrow.down")
-                                })
-                                Button(action: actionSheet,
-                                    label:{
-                                    Image(systemName: "square.and.arrow.up")
-                                    })
-                        }
-                    }
                 VStack(alignment: .center){
                     VStack {
                         Text("Take a selfie with.. \n ")
@@ -43,27 +31,27 @@ struct CameraPageView: View {
                             .fontWeight(.bold)
                             .font(.title)
                     }.multilineTextAlignment(.center)
-                    .foregroundColor(.black)
-     //               ZStack {
+                        .foregroundColor(.black)
+                    ZStack {
                         CameraView()
-    //                    Text(emoji)
-    //                    .font(.system(size: fontsize))
-    //                    .padding()
-    //                }
-                    ZStack { // Shutter Button
+                        Text(emoji)
+                            .font(.system(size: fontsize))
+                            .padding()
+                    }
+                    ZStack {
                         Circle()
                             .fill(.black)
                             .frame(width: 120, height: 120)
                         Circle()
-                        .fill(.white)
-                        .frame(width: 100, height: 100)
+                            .fill(.white)
+                            .frame(width: 100, height: 100)
                         Button (action: {
                             camera.takePic()
                         } ,
                                 label: {
                             LottieView(lottieFile: "lottiebee")
                                 .frame(width: 100, height: 100)
-                                    
+                            
                         })
                         .frame(width: 60, height: 60)
                     }
@@ -77,7 +65,7 @@ struct CameraPageView: View {
         guard let urlShare = URL(string:"https://developer.apple.com/xcode/swiftui/")
         else {return }
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let window = windowScene.windows.first {
+           let window = windowScene.windows.first {
             let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
             window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }

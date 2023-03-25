@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
+            //CameraPageView()
             LandingPageView()
                 .navigationBarTitle("")
         }.accentColor(.black).colorScheme(.light)
@@ -19,6 +20,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        //FinalView()
     }
 }
 
