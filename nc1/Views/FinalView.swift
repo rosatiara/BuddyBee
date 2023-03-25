@@ -26,19 +26,23 @@ struct FinalView: View {
                         })
                     }
                 }.border(.blue)
-            VStack {
-                DataField("Write your buddy-bee honey-like buzz-words", data: $caption) { text in text.count < 30 }
-                    .padding()
-                    .border(.blue)
-                ZStack {
-                    CameraView()
-                    Text(emoji)
-                        .font(.system(size: fontsize))
-                        .padding()
+            ScrollView {
+                ScrollViewReader { scrollView in
+                    VStack {
+                        DataField("Write your buddy-bee honey-like buzz-words", data: $caption) { text in text.count < 30 }
+                            .padding()
+                            .border(.blue)
+                        ZStack {
+                            CameraView()
+                            Text(emoji)
+                                .font(.system(size: fontsize))
+                                .padding()
+                        }
+                        LottieView(lottieFile: "lottiebee")
+                            .frame(width: 50, height: 50)
+                            .border(.red)
+                    }
                 }
-                LottieView(lottieFile: "lottiebee")
-                    .frame(width: 50, height: 50)
-                    .border(.red)
             }
         }
     }
@@ -51,7 +55,7 @@ struct FinalView: View {
             window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
     }
-
+    
 }
 
 

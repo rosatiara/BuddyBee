@@ -44,13 +44,13 @@ struct CameraPageView: View {
                             .font(.title)
                     }.multilineTextAlignment(.center)
                         .foregroundColor(.black)
-                    //               ZStack {
-                    CameraView()
-                    //                    Text(emoji)
-                    //                    .font(.system(size: fontsize))
-                    //                    .padding()
-                    //                }
-                    ZStack { // Shutter Button
+                    ZStack {
+                        CameraView()
+                        Text(emoji)
+                            .font(.system(size: fontsize))
+                            .padding()
+                    }
+                    ZStack { 
                         Circle()
                             .fill(.black)
                             .frame(width: 120, height: 120)
