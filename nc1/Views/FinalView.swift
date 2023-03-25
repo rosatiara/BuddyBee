@@ -10,7 +10,7 @@ struct FinalView: View {
     private let characterLimit = 30 // batasin jumlah karakter caption
     let emoji: String
     let fontsize: CGFloat = 50.0
-    @State var capturedImage: UIImage?
+    @State var image: UIImage?
     @StateObject var camera = CameraModel()
     var body: some View {
         ZStack {
@@ -46,7 +46,7 @@ struct FinalView: View {
                                         x: 4,
                                         y: 4)
                                 .shadow(color: .white, radius: 2, x: -1, y: -1)
-                            if let image = camera.capturedImage { // hasil foto
+                            if let image = camera.image { // hasil foto
                                 Image(uiImage: image)
                                                 .resizable()
                                                 .scaledToFit()

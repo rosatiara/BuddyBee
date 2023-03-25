@@ -12,7 +12,7 @@ import UIKit
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    @Published var capturedImage: UIImage?
+    @Published var image: UIImage?
     var completionHandler: ((UIImage?) -> Void)?
     
     static let shared = CameraModel()
@@ -100,19 +100,26 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         if error != nil {
             return
         }
-        if let imageData = photo.fileDataRepresentation() {
-                    if let uiImage = UIImage(data: imageData) {
-                        completionHandler?(uiImage)
-                    }
-                }
         print("Picture taken!")
     }
     
-    func setCapturedImage(_ image: UIImage) {
-        DispatchQueue.main.async {
-            self.capturedImage = image
+    func getImageFromSampleBuffer(buffer: CMSampleBuffer)-> UIImage? {
+        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
+            let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+            let context = CIContext()
+            let imageRect = CGRect(x: 0, y: 0, width: 310, height: 380)
+            if let image = context.createCGImage(ciImage, from: imageRect) {
+                return UIImage(cgImage: image, scale: 1.0, orientation: .upMirrored)
+            }
         }
+        return nil
     }
+    
+//    func setCapturedImage(_ image: UIImage) {
+//        DispatchQueue.main.async {
+//            self.capturedImage = image
+//        }
+//    }
 
     
     // Filters
