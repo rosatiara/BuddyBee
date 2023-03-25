@@ -12,7 +12,7 @@ struct CameraPageView: View {
     @State private var emoji = emojis.randomElement()!
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
-    
+
     @State private var isFinalViewActive = false
     
     var body: some View {

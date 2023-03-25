@@ -14,6 +14,7 @@ struct FinalView: View {
     
     // hasil foto
     @ObservedObject var camera = CameraModel()
+    @State private var capturedImage: Image?
     
     var body: some View {
         ZStack {
@@ -32,6 +33,8 @@ struct FinalView: View {
                     }
                 }
             //
+            ScrollView {
+                ScrollViewReader { scrollView in
                     VStack {
                         TextField("Write honey-like buzz-words!", text: $caption)//{ text in text.count < 30 }
                             .padding()
@@ -47,15 +50,15 @@ struct FinalView: View {
                                         x: 4,
                                         y: 4)
                                 .shadow(color: .white, radius: 2, x: -1, y: -1)
-                            if let image = camera.capturedImage { // hasil foto
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 300, height: 300)
-                                        .border(.red)
-                                } else {
-                                    Text("nooooooooo iiiiiimmaaaageee")
-                                }
+                            if let image = capturedImage { // hasil foto
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300, height: 300)
+                                    .border(.red)
+                            } else {
+                                Text("nooooooooo iiiiiimmaaaageee")
+                            }
                             Text(emoji)
                                 .font(.system(size: fontsize))
                                 .padding()
@@ -64,6 +67,9 @@ struct FinalView: View {
                             .frame(width: 200, height: 200)
                             .offset(y: -22)
                     }
+                }
+            }
+                    
 //                }
 //            }
         }

@@ -13,6 +13,8 @@ import UIKit
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @Published var capturedImage: Image?
+    @Published var uiImage: UIImage? // add this variable to hold the captured image as UIImage
+    
     var completionHandler: ((UIImage?) -> Void)?
     
     static let shared = CameraModel()
@@ -29,6 +31,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
     
     override init() {
         super.init()
+        self.capturedImage = capturedImage
         check()
         sessionQueue.async { [unowned self] in
             self.setUp()
@@ -116,8 +119,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         }
         
         print("Picture taken!")
-        self.capturedImage = Image(uiImage: image)
-        self.completionHandler?(image)
+                self.capturedImage = Image(uiImage: image)
+                self.uiImage = image // store the captured image as UIImage
+                self.completionHandler?(image)
     }
 
 
