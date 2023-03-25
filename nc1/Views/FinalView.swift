@@ -49,7 +49,7 @@ struct FinalView: View {
                     .font(.system(size: fontsize))
                     .padding()
                 }
-// -- Tambahin gambar bee lottie di sini ---- 
+//
             }
         }
     func actionSheet() {
@@ -61,6 +61,7 @@ struct FinalView: View {
             window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
     }
+
 }
 
 struct FinalView_Previews: PreviewProvider {

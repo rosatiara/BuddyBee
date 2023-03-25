@@ -8,18 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2FA57A9229C96DC30018FBBC /* CameraPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA57A9129C96DC30018FBBC /* CameraPageView.swift */; };
-		3110E8DB29CDE0BB0006A387 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110E8DA29CDE0BB0006A387 /* ControlView.swift */; };
-		3121B4F029CC01670044202A /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121B4EF29CC01670044202A /* FiltersViewModel.swift */; };
+		3110E8E129CE2C750006A387 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110E8E029CE2C750006A387 /* Coordinator.swift */; };
 		3121B4F429CC051E0044202A /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121B4F329CC051E0044202A /* ConfettiView.swift */; };
 		3121B4F729CC0A4B0044202A /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121B4F629CC0A4B0044202A /* Names.swift */; };
 		3178B5C829C611F000DEF964 /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178B5C729C611F000DEF964 /* FinalView.swift */; };
 		31B9760F29C97A51001B525A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9760E29C97A51001B525A /* CameraView.swift */; };
+		31B9AAA529CE346E00F2C060 /* Contoh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9AAA429CE346E00F2C060 /* Contoh.swift */; };
 		31E6BC0729CDD84E0043EC64 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0629CDD84E0043EC64 /* CameraModel.swift */; };
 		31E6BC0929CDD8F10043EC64 /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0829CDD8F10043EC64 /* CameraError.swift */; };
-		31E6BC0B29CDD9210043EC64 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0A29CDD9210043EC64 /* FrameManager.swift */; };
-		31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */; };
-		31E6BC0F29CDDA340043EC64 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */; };
-		31E6BC1129CDDB930043EC64 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6BC1029CDDB930043EC64 /* ToggleButton.swift */; };
 		31F8805629C5B43A00041D4C /* nc1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805529C5B43A00041D4C /* nc1App.swift */; };
 		31F8805829C5B43A00041D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8805729C5B43A00041D4C /* ContentView.swift */; };
 		31F8805A29C5B43B00041D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F8805929C5B43B00041D4C /* Assets.xcassets */; };
@@ -53,18 +49,14 @@
 
 /* Begin PBXFileReference section */
 		2FA57A9129C96DC30018FBBC /* CameraPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPageView.swift; sourceTree = "<group>"; };
-		3110E8DA29CDE0BB0006A387 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		3121B4EF29CC01670044202A /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
+		3110E8E029CE2C750006A387 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3121B4F329CC051E0044202A /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		3121B4F629CC0A4B0044202A /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
 		3178B5C729C611F000DEF964 /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalView.swift; sourceTree = "<group>"; };
 		31B9760E29C97A51001B525A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		31B9AAA429CE346E00F2C060 /* Contoh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contoh.swift; sourceTree = "<group>"; };
 		31E6BC0629CDD84E0043EC64 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		31E6BC0829CDD8F10043EC64 /* CameraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
-		31E6BC0A29CDD9210043EC64 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
-		31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
-		31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
-		31E6BC1029CDDB930043EC64 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		31F8805229C5B43A00041D4C /* nc1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nc1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F8805529C5B43A00041D4C /* nc1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nc1App.swift; sourceTree = "<group>"; };
 		31F8805729C5B43A00041D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				31B9760E29C97A51001B525A /* CameraView.swift */,
-				3121B4EF29CC01670044202A /* FiltersViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -140,11 +131,8 @@
 			children = (
 				31E6BC0629CDD84E0043EC64 /* CameraModel.swift */,
 				31E6BC0829CDD8F10043EC64 /* CameraError.swift */,
-				31E6BC0A29CDD9210043EC64 /* FrameManager.swift */,
-				31E6BC0C29CDDA030043EC64 /* CGImageExtension.swift */,
-				31E6BC0E29CDDA340043EC64 /* FilterViewModel.swift */,
-				31E6BC1029CDDB930043EC64 /* ToggleButton.swift */,
-				3110E8DA29CDE0BB0006A387 /* ControlView.swift */,
+				3110E8E029CE2C750006A387 /* Coordinator.swift */,
+				31B9AAA429CE346E00F2C060 /* Contoh.swift */,
 			);
 			path = CameraFilters;
 			sourceTree = "<group>";
@@ -349,22 +337,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31E6BC0F29CDDA340043EC64 /* FilterViewModel.swift in Sources */,
-				3110E8DB29CDE0BB0006A387 /* ControlView.swift in Sources */,
 				3121B4F729CC0A4B0044202A /* Names.swift in Sources */,
 				2FA57A9229C96DC30018FBBC /* CameraPageView.swift in Sources */,
-				31E6BC0B29CDD9210043EC64 /* FrameManager.swift in Sources */,
 				31F8805829C5B43A00041D4C /* ContentView.swift in Sources */,
+				3110E8E129CE2C750006A387 /* Coordinator.swift in Sources */,
 				31F8805629C5B43A00041D4C /* nc1App.swift in Sources */,
 				31E6BC0729CDD84E0043EC64 /* CameraModel.swift in Sources */,
 				3178B5C829C611F000DEF964 /* FinalView.swift in Sources */,
+				31B9AAA529CE346E00F2C060 /* Contoh.swift in Sources */,
 				3121B4F429CC051E0044202A /* ConfettiView.swift in Sources */,
 				31FF525929CDB8BC00CB41F9 /* LottieView.swift in Sources */,
-				31E6BC0D29CDDA030043EC64 /* CGImageExtension.swift in Sources */,
-				31E6BC1129CDDB930043EC64 /* ToggleButton.swift in Sources */,
 				31E6BC0929CDD8F10043EC64 /* CameraError.swift in Sources */,
 				31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */,
-				3121B4F029CC01670044202A /* FiltersViewModel.swift in Sources */,
 				31B9760F29C97A51001B525A /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
