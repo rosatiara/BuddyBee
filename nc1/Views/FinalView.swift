@@ -1,55 +1,45 @@
-//
-//  FinalView.swift
-//  nc1
-//
-//  Created by Team 1 on 18/03/23.
-//
-
 import SwiftUI
 import Foundation
-import UIKit
+import AVFoundation
+import DataField
 
 
 struct FinalView: View {
+    @State private var caption = ""
+    private let characterLimit = 30 // batasin jumlah karakter caption
     let emoji = emojis.randomElement()!
     let fontsize: CGFloat = 50.0
     @StateObject var camera = CameraModel()
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
-            //Color(0xFEDF3F)
-                .edgesIgnoringSafeArea(.all)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action:{},
-                            label:{
-                            Image(systemName: "square.and.arrow.down")
-                            })
-                            Button(action: actionSheet,
+//        VStack {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
+                //Color(0xFEDF3F)
+                    .edgesIgnoringSafeArea(.all)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing){
+                        Button(action:takeScreenshotAndSave,
                                 label:{
-                                Image(systemName: "square.and.arrow.up")
+                                Image(systemName: "square.and.arrow.down")
                                 })
+                                Button(action: actionSheet,
+                                    label:{
+                                    Image(systemName: "square.and.arrow.up")
+                                    })
+                        }
                     }
-                }
-// ------ INI DIGANTI TEXTFIELD ------
-//            VStack(alignment: .center){
-//                VStack {
-//                    Text("Take a selfie with.. \n ")
-//                        .fontWeight(.regular)
-//                        .font(.title3)
-//                    +
-//                    Text(learner)
-//                        .fontWeight(.bold)
-//                        .font(.title)
-//                }.multilineTextAlignment(.center)
-//                .foregroundColor(.black)
-                ZStack {
-                    CameraView()
-                    Text(emoji)
-                    .font(.system(size: fontsize))
+                DataField("Write your buddy-bee honey-like buzz-words", data: $caption) { text in text.count < 30 }
+//                TextField("Write your buddy-bee honey-like buzz-words", text: $caption)
                     .padding()
-                }
-//
+                    ZStack {
+                        CameraView()
+                        Text(emoji)
+                        .font(.system(size: fontsize))
+                        .padding()
+                    }
+                LottieView(lottieFile: "lottiebee")
+                    .frame(width: 50, height: 50)
+    // -- Tambahin gambar bee lottie di sini ----
             }
         }
     func actionSheet() {
@@ -87,4 +77,79 @@ func takeScreenshot(_ sender: Any) {
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
 }
 
+    
+struct FinalView_Previews: PreviewProvider {
+        static var previews: some View {
+            FinalView()
+        }
+    }
+    
+func takeScreenshotAndSave() {
+        // Get the current scene
+        guard let scene = UIApplication.shared.connectedScenes.first else {
+            return
+        }
+        
+        // Get the window for the scene
+        guard let window = (scene as? UIWindowScene)?.windows.first else {
+            return
+        }
+        
+        // Begin the graphics context
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
+        
+        // Render the window into the graphics context
+        window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+        
+        // Get the screenshot as an image
+        guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
+        
+        // End the graphics context
+        UIGraphicsEndImageContext()
+        
+        // Save the screenshot to the Photos library
+        UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
+    }
 
+
+//struct TextFieldWrapper: UIViewRepresentable {
+//
+//    @Binding var text: String
+//
+//    func makeUIView(context: Context) -> UITextField {
+//        let textField = UITextField(frame: .zero)
+//        textField.borderStyle = .roundedRect
+//        textField.font = UIFont.systemFont(ofSize: 15)
+//        textField.delegate = context.coordinator
+//        return textField
+//    }
+//
+//    func updateUIView(_ textField: UITextField, context: Context) {
+//        textField.text = text
+//    }
+//
+//    func makeCoordinator() -> Coordinator {
+//        Coordinator(self)
+//    }
+//
+//    class Coordinator: NSObject, UITextFieldDelegate {
+//
+//        var parent: TextFieldWrapper
+//
+//        init(_ textFieldWrapper: TextFieldWrapper) {
+//            self.parent = textFieldWrapper
+//        }
+//
+//        func textFieldDidChangeSelection(_ textField: UITextField) {
+//            parent.text = textField.text ?? ""
+//        }
+//
+//    }
+//}
+
+    
+
+//add to info.plist fileprivate<key>NSPhotoLibraryAddUsageDescription</key>
+//<string>Save screenshots to the Photos library</string>

@@ -28,6 +28,7 @@
 		31FF525F29CDC3AC00CB41F9 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF525E29CDC3AC00CB41F9 /* LandingPageView.swift */; };
 		751D9D6229CDC85F002CE319 /* lottiebee.json in Resources */ = {isa = PBXBuildFile; fileRef = 751D9D6129CDC85F002CE319 /* lottiebee.json */; };
 		75835F2929CD503F00A058D6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 75835F2829CD503F00A058D6 /* Lottie */; };
+		D0B40BE329CE0ECE007BBC67 /* DataField in Frameworks */ = {isa = PBXBuildFile; productRef = D0B40BE229CE0ECE007BBC67 /* DataField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75835F2929CD503F00A058D6 /* Lottie in Frameworks */,
+				D0B40BE329CE0ECE007BBC67 /* DataField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 			name = nc1;
 			packageProductDependencies = (
 				75835F2829CD503F00A058D6 /* Lottie */,
+				D0B40BE229CE0ECE007BBC67 /* DataField */,
 			);
 			productName = nc1;
 			productReference = 31F8805229C5B43A00041D4C /* nc1.app */;
@@ -293,6 +296,7 @@
 			mainGroup = 31F8804929C5B43A00041D4C;
 			packageReferences = (
 				75835F2729CD503F00A058D6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				D0B40BE129CE0ECE007BBC67 /* XCRemoteSwiftPackageReference "data-field" */,
 			);
 			productRefGroup = 31F8805329C5B43A00041D4C /* Products */;
 			projectDirPath = "";
@@ -689,6 +693,14 @@
 				kind = branch;
 			};
 		};
+		D0B40BE129CE0ECE007BBC67 /* XCRemoteSwiftPackageReference "data-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcusrossel/data-field.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -696,6 +708,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 75835F2729CD503F00A058D6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		D0B40BE229CE0ECE007BBC67 /* DataField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0B40BE129CE0ECE007BBC67 /* XCRemoteSwiftPackageReference "data-field" */;
+			productName = DataField;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
