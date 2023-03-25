@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "data-field",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marcusrossel/data-field.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "81f3cefcf320d9ca203f6e8754179a5b2d85d62f"
+      }
+    },
+    {
       "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",
