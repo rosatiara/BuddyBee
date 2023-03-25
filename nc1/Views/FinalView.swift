@@ -94,31 +94,6 @@ func takeScreenshot() {
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
 }
 
-
-    
-//func takeScreenshotAndSave() {
-//
-//    guard let scene = UIApplication.shared.connectedScenes.first else {
-//        return
-//    }
-//
-//    guard let window = (scene as? UIWindowScene)?.windows.first else {
-//        return
-//    }
-//
-//    UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
-//
-//    window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
-//
-//    guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else {
-//        return
-//    }
-//    UIGraphicsEndImageContext()
-//
-//    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
-//}
-
-
 struct ImageView: View {
     var image: Image
     var body: some View {
