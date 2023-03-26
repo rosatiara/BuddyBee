@@ -7,7 +7,6 @@ import UIKit
 
 struct FinalView: View {
     // caption & emoji
-    @State private var caption = ""
     private let characterLimit = 30 // batasin jumlah karakter caption
     let emoji: String
     let fontsize: CGFloat = 50.0
@@ -20,26 +19,26 @@ struct FinalView: View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing){
-                        Button(action:takeScreenshot,
-                               label:{
-                            Image(systemName: "square.and.arrow.down")
-                        })
-                        Button(action: actionSheet,
-                               label:{
-                            Image(systemName: "square.and.arrow.up")
-                        })
-                    }
-                }
+//                .toolbar {
+//                    ToolbarItemGroup(placement: .navigationBarTrailing){
+//                        Button(action:takeScreenshot,
+//                               label:{
+//                            Image(systemName: "square.and.arrow.down")
+//                        })
+//                        Button(action: actionSheet,
+//                               label:{
+//                            Image(systemName: "square.and.arrow.up")
+//                        })
+//                    }
+//                }
             //
             ScrollView {
                 ScrollViewReader { scrollView in
                     VStack {
-                        TextField("Write honey-like buzz-words!", text: $caption)//{ text in text.count < 30 }
-                            .padding()
-                            .padding(.leading, 30)
-                            .frame(alignment: .center)
+//                        TextField("Write honey-like buzz-words!", text: $caption)//{ text in text.count < 30 }
+//                            .padding()
+//                            .padding(.leading, 30)
+//                            .frame(alignment: .center)
                         ZStack {
                             Rectangle() // polaroid
                                 .colorInvert()
@@ -69,9 +68,6 @@ struct FinalView: View {
                     }
                 }
             }
-                    
-//                }
-//            }
         }
     }
     

@@ -14,50 +14,71 @@ struct CameraPageView: View {
     @StateObject var camera = CameraModel()
 
     @State private var isFinalViewActive = false
-    
+    @State private var caption = ""
+
     var body: some View {
         NavigationLink(destination: FinalView(emoji: emoji), isActive: $isFinalViewActive) {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [(Color(0xFEDF3F)), (Color(0xFED43F))]), startPoint: .top, endPoint: .bottom)
                 //Color(0xFEDF3F)
                     .edgesIgnoringSafeArea(.all)
-                VStack(alignment: .center){
-                    VStack {
-                        Text("Take a selfie with.. \n ")
-                            .fontWeight(.regular)
-                            .font(.title3)
-                        +
-                        Text(learner)
-                            .fontWeight(.bold)
-                            .font(.title)
-                    }.multilineTextAlignment(.center)
-                        .foregroundColor(.black)
-                    ZStack {
-                        CameraView()
-                        Text(emoji)
-                            .font(.system(size: fontsize))
-                            .padding()
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing){
+                            Button(action:takeScreenshot,
+                                   label:{
+                                Image(systemName: "square.and.arrow.down")
+                            })
+                            Button(action: actionSheet,
+                                   label:{
+                                Image(systemName: "square.and.arrow.up")
+                            })
+                        }
                     }
-                    ZStack {
-                        Circle()
-                            .fill(.black)
-                            .frame(width: 120, height: 120)
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 100, height: 100)
-                        Button (action: {
-                            camera.takePic()
-                        } ,
-                                label: {
-                            LottieView(lottieFile: "lottiebee")
-                                .frame(width: 100, height: 100)
-                            
-                        })
-                        .frame(width: 60, height: 60)
+                ScrollView {
+                    ScrollViewReader {
+                        ScrollView in
+                        VStack(alignment: .center){
+                            VStack {
+                                Text("Take a selfie with.. \n ")
+                                    .fontWeight(.regular)
+                                    .font(.title3)
+                                +
+                                Text(learner)
+                                    .fontWeight(.bold)
+                                    .font(.title)
+                                TextField("Write honey-like buzz-words for your buddy!", text: $caption)//{ text in text.count < 30 }
+                                    .frame(alignment: .center)
+                            }.multilineTextAlignment(.center)
+                                .foregroundColor(.black)
+                            ZStack { // polaroid & emoji
+                                CameraView()
+                                Text(emoji)
+                                    .font(.system(size: fontsize))
+                                    .padding()
+                            }
+                            ZStack {
+                                Circle()
+                                    .fill(.black)
+                                    .frame(width: 100, height: 100)
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 80, height: 80)
+                                Button (action: {
+                                    camera.takePic()
+                                } ,
+                                        label: {
+                                    LottieView(lottieFile: "lottiebee")
+                                        .frame(width: 80, height: 80)
+                                    
+                                })
+                                .frame(width: 60, height: 60)
+                            } // shutter
+                        }
+
                     }
                 }
             }.onTapGesture {
-                isFinalViewActive = true
+                isFinalViewActive = false
             }
         }
     }

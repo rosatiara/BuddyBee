@@ -23,17 +23,17 @@ struct CameraView: View {
             Rectangle()
                 .colorInvert()
                 .background(Color.white)
-                .frame(width: 350, height: 497)
+                .frame(width: 350, height: 500)
                 .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15),
                         radius: 2,
                         x: 4,
                         y: 4)
                 .shadow(color: .white, radius: 2, x: -1, y: -1)
-            
             CameraPreview(camera: camera)
             Text("\(currentDate)")
                 .foregroundColor(.black)
-                .offset(x: 74, y: -222)
+                .offset(x: 95, y: -240)
+                .font(.footnote)
         }.onAppear(perform: {
             camera.check()
         })
@@ -84,7 +84,7 @@ struct CameraPreview: UIViewRepresentable {
         // modif size camera preview
         camera.preview.videoGravity = .resizeAspectFill
         camera.preview.frame = CGRect(x: 0, y: 0, width: 310, height: 380)
-        camera.preview.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3.4)
+        camera.preview.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3.9)
         
         // swipe gestures
         let swipe = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleSwipe(_:)))
